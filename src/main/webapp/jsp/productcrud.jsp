@@ -5,12 +5,11 @@
 <html>
 <head>
 <title>제품 관리</title>
-    <link href="css/home.css" rel="stylesheet" />
 </head>
+    <link href="css/home.css" rel="stylesheet" />
 <section>
-	<c:import url="../sidebar/sidebar.jsp" />
-</section>
-
+<%-- 	<c:import url="../sidebar/sidebar.jsp" />
+ --%></section>
 <body>
 <div>
 <h2>제품 등록</h2>

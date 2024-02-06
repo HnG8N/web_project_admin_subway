@@ -9,7 +9,6 @@
     <title>Side Navbar - Tivotal</title>
     <link rel="stylesheet" href="sidebar/sidebar.css" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
-    <link href="sidebar/sidebar.css" rel="stylesheet" />
   </head>
   <body>
     <section class="sidebar">

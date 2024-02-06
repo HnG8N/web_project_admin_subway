@@ -76,7 +76,7 @@ public class FrontController extends HttpServlet {
 		case ("/productdb.do"):
 			command = new ProductInsert();
 			command.execute(request, response);
-			response.sendRedirect("/productlist.do");
+			response.sendRedirect("/admin/productlist.do");
 		break;
 		default:
 			break;

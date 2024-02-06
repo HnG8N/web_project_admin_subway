@@ -15,12 +15,12 @@
 	}
   </style>
 <!--   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
- -->
-  </head>
+ -->  
+</head>
 <body>
 <div>
-	<c:import url="../sidebar/sidebar.jsp" />
-</div>
+<%-- 	<c:import url="../sidebar/sidebar.jsp" />
+ --%></div>
 <div>
 	<div class="container">
 	 <p><h2>상품 리스트</h2>
@@ -28,8 +28,8 @@
 		<c:forEach var="list" items="1, 2, 3, 4, 5, 6, 7, 8, 9, 10">
 	      <div class="col">
 	        <div class="card">
-	          	제품코드, 카테고리, 이름, 영문명, 상세정보, 가격
 	          <img src="img/cat1.png" class="card-img-top" alt="..." >
+	          	제품코드, 카테고리, 이름, 영문명, 상세정보, 가격
 	            <a href="#" class="btn btn-primary">자세히 보기</a>
 	          </div>
 	        </div>

@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.javalec.dao.ProductInsert_Dao;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -29,16 +30,20 @@ public class ProductInsert implements Command {
             System.out.println(mnimg);
             String mncode = multi.getParameter("mncode");
             System.out.println(mncode);
-            String mnctg = multi.getParameter("mncode");
+            String mnctg = multi.getParameter("mnctg");
             System.out.println(mnctg);
-            String mnname = multi.getParameter("mncode");
+            String mnname = multi.getParameter("mnname");
             System.out.println(mnname);
-            String mnengname = multi.getParameter("mncode");
+            String mnengname = multi.getParameter("mnengname");
             System.out.println(mnengname);
-            String mninfo = multi.getParameter("mncode");
+            String mninfo = multi.getParameter("mninfo");
             System.out.println(mninfo);
-            String mnprice = multi.getParameter("mncode");
+            String mnprice = multi.getParameter("mnprice");
             System.out.println(mnprice);
+            
+            ProductInsert_Dao dao = new ProductInsert_Dao();
+            dao.insertAction(mnctg, mnname, mnengname, mninfo, mnimg, mnprice);
+            System.out.println("입력 성공");
 
 		} catch (IOException e) {
 			e.printStackTrace();
