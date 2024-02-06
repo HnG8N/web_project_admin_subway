@@ -2,10 +2,14 @@ package com.javalec.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import com.javalec.dto.ProductSelect_Dto;
 
 public class ProductSelect_Dao {
 	
@@ -27,23 +31,33 @@ public class ProductSelect_Dao {
 	
 	// Method
 	// DB에서 불러오기 (Select)
-	public void insertAction(String mnctg, String mnname, String mnengname, String mninfo, String mnimg, String mnprice) {
+	public ArrayList<ProductSelect_Dto> selectAction() {
+		ArrayList<ProductSelect_Dto> dtos = new ArrayList<ProductSelect_Dto>();
+		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		try {
 			connection = dataSource.getConnection();	// dataSoure를 연결 해주는 명령어
-			String query = "INSERT INTO menu (mnctg, mnname, mnengname, mninfo, mnimg, mnprice) VALUES (?, ?, ?, ?, ?, ?)";	// 쿼리문 작성
+			String query = "SELECT mncode, mnctg, mnname, mnengname, mninfo, mnimg, mnprice FROM menu";	// 쿼리문 작성
 			
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, mnctg);
-			preparedStatement.setString(2, mnname);
-			preparedStatement.setString(3, mnengname);
-			preparedStatement.setString(4, mninfo);
-			preparedStatement.setString(5, mnimg);
-			preparedStatement.setString(6, mnprice);
+			ResultSet rs = preparedStatement.executeQuery();
 			
-			preparedStatement.executeUpdate();
+			while(rs.next()) {
+				ProductSelect_Dto dto = new ProductSelect_Dto();
+				
+				dto.setMncode(rs.getInt("mncode"));
+				dto.setMnctg(rs.getString("mnctg"));
+				dto.setMnname(rs.getString("mnname"));
+				dto.setMnengname(rs.getString("mnengname"));
+				dto.setMninfo(rs.getString("mninfo"));
+				dto.setMnimg(rs.getString("mnimg"));
+				dto.setMnprice(rs.getInt("mnprice"));
+				
+				dtos.add(dto);
+			}
+			
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -55,8 +69,91 @@ public class ProductSelect_Dao {
 				e.printStackTrace();
 			}
 		}
+		return dtos;
+		
+	} // selectAction()
 
-	} // insertAction()
+	// DB에서 Name 조건으로 불러오기 (Select)
+	public ArrayList<ProductSelect_Dto> searchNameAction(String mnname, String mnengname) {
+		ArrayList<ProductSelect_Dto> dtos = new ArrayList<ProductSelect_Dto>();
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();	// dataSoure를 연결 해주는 명령어
+			String query = "SELECT mncode, mnctg, mnname, mnengname, mninfo, mnimg, mnprice FROM menu";	// 쿼리문 작성
+			String where = " WHERE mnname LIKE '%" + mnname + "%' OR mnengname LIKE '%" + mnengname + "%'";
+			
+			preparedStatement = connection.prepareStatement(query + where);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				ProductSelect_Dto dto = new ProductSelect_Dto();
+				
+				dto.setMncode(rs.getInt("mncode"));
+				dto.setMnctg(rs.getString("mnctg"));
+				dto.setMnname(rs.getString("mnname"));
+				dto.setMnengname(rs.getString("mnengname"));
+				dto.setMninfo(rs.getString("mninfo"));
+				dto.setMnimg(rs.getString("mnimg"));
+				dto.setMnprice(rs.getInt("mnprice"));
+				
+				dtos.add(dto);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {	// try 다음에도 오고 catch 다음에도 오기 때문에 메모리 정리용도로 자주 사용함, 보통 역순으로 정리
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dtos;
+	} // searchNameAction()
+	
+	// DB에서 Code 조건으로 불러오기 (Select)
+	public ArrayList<ProductSelect_Dto> searchCodeAction(String mncode) {
+		ArrayList<ProductSelect_Dto> dtos = new ArrayList<ProductSelect_Dto>();
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();	// dataSoure를 연결 해주는 명령어
+			String query = "SELECT mncode, mnctg, mnname, mnengname, mninfo, mnimg, mnprice FROM menu";	// 쿼리문 작성
+			String where = " WHERE mncode LIKE '%" + mncode + "%'";
+			
+			preparedStatement = connection.prepareStatement(query + where);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				ProductSelect_Dto dto = new ProductSelect_Dto();
+				
+				dto.setMncode(rs.getInt("mncode"));
+				dto.setMnctg(rs.getString("mnctg"));
+				dto.setMnname(rs.getString("mnname"));
+				dto.setMnengname(rs.getString("mnengname"));
+				dto.setMninfo(rs.getString("mninfo"));
+				dto.setMnimg(rs.getString("mnimg"));
+				dto.setMnprice(rs.getInt("mnprice"));
+				
+				dtos.add(dto);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {	// try 다음에도 오고 catch 다음에도 오기 때문에 메모리 정리용도로 자주 사용함, 보통 역순으로 정리
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dtos;
+	} // searchCodeAction()
 
 
 
