@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.javalec.command.Command;
 import com.javalec.command.ProductCRUD;
-import com.javalec.command.ProductInsert;
+import com.javalec.command.ProductDetail;
 import com.javalec.command.ProductList;
 
 /**
@@ -67,15 +67,15 @@ public class FrontController extends HttpServlet {
 			command.execute(request, response);
 //			response.sendRedirect("/admin/jsp/productlist.jsp");
 			viewPage = "/jsp/productlist.jsp";
-		break;
-		case ("/productcrud.do"):
-			command = new ProductCRUD();
+			break;
+		case ("/productdetail.do"):
+			command = new ProductDetail();
 			command.execute(request, response);
 //			response.sendRedirect("/admin/jsp/productlist.jsp");
-			viewPage = "/jsp/productcrud.jsp";
+			viewPage = "/jsp/productdetail.jsp";
 			break;
-		case ("/productdb.do"):
-			command = new ProductInsert();
+		case ("/productcrud.do"):
+			command = new ProductCRUD();
 			command.execute(request, response);
 			response.sendRedirect("/admin/productlist.do");
 		break;

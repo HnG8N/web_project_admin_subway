@@ -82,10 +82,14 @@ public class ProductSelect_Dao {
 		
 		try {
 			connection = dataSource.getConnection();	// dataSoure를 연결 해주는 명령어
-			String query = "SELECT mncode, mnctg, mnname, mnengname, mninfo, mnimg, mnprice FROM menu";	// 쿼리문 작성
-			String where = " WHERE mnname LIKE '%" + mnname + "%' OR mnengname LIKE '%" + mnengname + "%'";
+			String query = "SELECT mncode, mnctg, mnname, mnengname, mninfo, mnimg, mnprice FROM menu"
+						 + " WHERE mnname LIKE ? OR mnengname LIKE ?";	// 쿼리문 작성
 			
-			preparedStatement = connection.prepareStatement(query + where);
+			preparedStatement = connection.prepareStatement(query);
+			
+			preparedStatement.setString(1, "%" + mnname + "%");
+			preparedStatement.setString(2, "%" + mnengname + "%");
+			
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {
@@ -123,13 +127,15 @@ public class ProductSelect_Dao {
 		
 		try {
 			connection = dataSource.getConnection();	// dataSoure를 연결 해주는 명령어
-			String query = "SELECT mncode, mnctg, mnname, mnengname, mninfo, mnimg, mnprice FROM menu";	// 쿼리문 작성
-			String where = " WHERE mncode LIKE '%" + mncode + "%'";
+			String query = "SELECT mncode, mnctg, mnname, mnengname, mninfo, mnimg, mnprice FROM menu"
+						+ " WHERE mncode = ?";	// 쿼리문 작성
 			
-			preparedStatement = connection.prepareStatement(query + where);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, mncode);
+			
 			ResultSet rs = preparedStatement.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				ProductSelect_Dto dto = new ProductSelect_Dto();
 				
 				dto.setMncode(rs.getInt("mncode"));

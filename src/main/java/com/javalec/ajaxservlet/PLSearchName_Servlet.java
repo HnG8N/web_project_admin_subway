@@ -28,7 +28,6 @@ public class PLSearchName_Servlet extends HttpServlet {
         super();
     }
 
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -63,7 +62,6 @@ public class PLSearchName_Servlet extends HttpServlet {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-
 
 	}
 

@@ -27,19 +27,19 @@ public class ProductInsert implements Command {
             // 이미지 이름 불러오기
 			String mnimg = multi.getFilesystemName("mnimg");
 			// 이미지 이름 출력(확인)
-            System.out.println(mnimg);
-            String mncode = multi.getParameter("mncode");
-            System.out.println(mncode);
+//            System.out.println(mnimg);
+//            String mncode = multi.getParameter("mncode");
+//            System.out.println(mncode);
             String mnctg = multi.getParameter("mnctg");
-            System.out.println(mnctg);
+//            System.out.println(mnctg);
             String mnname = multi.getParameter("mnname");
-            System.out.println(mnname);
+//            System.out.println(mnname);
             String mnengname = multi.getParameter("mnengname");
-            System.out.println(mnengname);
+//            System.out.println(mnengname);
             String mninfo = multi.getParameter("mninfo");
-            System.out.println(mninfo);
+//            System.out.println(mninfo);
             String mnprice = multi.getParameter("mnprice");
-            System.out.println(mnprice);
+//            System.out.println(mnprice);
             
             ProductInsert_Dao dao = new ProductInsert_Dao();
             dao.insertAction(mnctg, mnname, mnengname, mninfo, mnimg, mnprice);

@@ -1,5 +1,4 @@
 window.onload = function(){
-	alert("AJAX요청전")
 	// AJAX 요청
 	$.ajax({
 	type: "POST",
@@ -7,7 +6,6 @@ window.onload = function(){
 	data: {mnname : ""},		// key와 value, 변수 이름(key)과 let name에 받아온 value값(value), dictionary라고 함
 	success: function(response){
 		// 서버에서 받은 응답 처리
-		alert("AJAX 응답")
 		createList(response)
 		}
 	})
@@ -26,14 +24,18 @@ function createList(data){
 		list += '<div class="card">' +
 	            '<table style="width: 100%;">' +
 	          	'<tr>' +
-	 			'<td style="width: 10%;"><img src="img/' + data[i].mnimg + '" class="card-img-top" alt="..." ></td>' +
+	 			'<td style="width: 12%;"><img src="img/' + data[i].mnimg + '" class="card-img-top" alt="..." ></td>' +
 	          	'<td style="width: 5%;">' + data[i].mncode + '</td>' +
-	          	'<td style="width: 5%;">' + data[i].mnctg + '</td>' +
-	          	'<td style="width: 5%;">' + data[i].mnname + '</td>' +
-	          	'<td style="width: 5%;">' + data[i].mnengname + '</td> ' +
-	          	'<td style="width: 50%;">' + data[i].mninfo + '</td>' +
-	          	'<td style="width: 10%;">' + data[i].mnprice + '</td>' +
-	            '<td style="width: 10%;"><a href="productcrud.do?mncode=' + data[i].mncode + '" class="btn btn-primary">자세히 보기</a></td>'+
+	          	'<td style="width: 10%;">' + data[i].mnctg + '</td>' +
+	          	'<td style="width: 15%;">' + data[i].mnname + '</td>' +
+	          	'<td style="width: 15%;">' + data[i].mnengname + '</td> ' +
+	          	'<td style="width: 30%;">' + data[i].mninfo + '</td>' +
+	          	'<td style="width: 10%;">' + 
+	          //'<fmt:formatNumber value="' + 
+	          	data[i].mnprice.toLocaleString() + 
+	          //'" groupingUsed="true"></fmt:formatNumber>' + 
+	          	"원" + '</td>' +
+	            '<td style="width: 8%;"><a href="productdetail.do?mncode=' + data[i].mncode + '" class="btn btn-primary">수정</a></td>'+
 	          	'</tr>' +
 	            '</table>' +
 	            '</div>'
@@ -57,14 +59,14 @@ $(document).ready(function() {
   });
 });
 
-
+// 검색에서 이름이나 코드를 선택해 검색
 $(document).ready(function() {
   $("#searchBtn").click(function() {
     // 선택한 옵션의 값을 가져옴
     let selectSearch = $("#selectSearch").val();
-    let mnname = $("#search").val();
-    let mnengname = $("#search").val();
-    let mncode = $("#search").val();
+    let mnname = $("#search").val().trim();
+    let mnengname = $("#search").val().trim();
+    let mncode = $("#search").val().trim();
     
     if(selectSearch==="nameSearch"){    // AJAX를 사용하여 서버에 값을 전달
       $.ajax({
