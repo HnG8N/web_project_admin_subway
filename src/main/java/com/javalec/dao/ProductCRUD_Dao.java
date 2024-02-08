@@ -26,14 +26,15 @@ public class ProductCRUD_Dao {
 	}
 	
 	// Method
-	// DB 입력
+	// DB Insert
 	public void insertAction(String mnctg, String mnname, String mnengname, String mninfo, String mnimg, String mnprice) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		try {
 			connection = dataSource.getConnection();	// dataSoure를 연결 해주는 명령어
-			String query = "INSERT INTO menu (mnctg, mnname, mnengname, mninfo, mnimg, mnprice) VALUES (?, ?, ?, ?, ?, ?)";	// 쿼리문 작성
+			String query = "INSERT INTO menu (mnctg, mnname, mnengname, mninfo, mnimg, mnprice)"
+						+ " VALUES (?, ?, ?, ?, ?, ?)";	// 쿼리문 작성
 			
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, mnctg);
@@ -57,6 +58,68 @@ public class ProductCRUD_Dao {
 		}
 
 	} // insertAction()
+
+	// DB Update
+	public void updateAction(String mnctg, String mnname, String mnengname, String mninfo, String mnprice, String mncode) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();	// dataSoure를 연결 해주는 명령어
+			String query = "UPDATE menu"
+						+ " SET mnctg = ?, mnname = ?, mnengname = ?, mninfo = ?, mnprice = ?"
+						+ " WHERE mncode = ?";	// 쿼리문 작성
+			
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, mnctg);
+			preparedStatement.setString(2, mnname);
+			preparedStatement.setString(3, mnengname);
+			preparedStatement.setString(4, mninfo);
+			preparedStatement.setString(5, mnprice);
+			preparedStatement.setString(6, mncode);
+			
+			preparedStatement.executeUpdate();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {	// try 다음에도 오고 catch 다음에도 오기 때문에 메모리 정리용도로 자주 사용함, 보통 역순으로 정리
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	} // updateAction()
+
+	// DB Update 이미지파일이 변경 되었을 경우
+	public void updateMnimg(String mnimg, String mncode) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();	// dataSoure를 연결 해주는 명령어
+			String query = "UPDATE menu SET mnimg = ? WHERE mncode = ?";	// 쿼리문 작성
+			
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, mnimg);
+			preparedStatement.setString(2, mncode);
+			
+			preparedStatement.executeUpdate();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {	// try 다음에도 오고 catch 다음에도 오기 때문에 메모리 정리용도로 자주 사용함, 보통 역순으로 정리
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	} // updateMnimg()
 
 
 

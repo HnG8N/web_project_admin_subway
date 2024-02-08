@@ -62,18 +62,25 @@ public class FrontController extends HttpServlet {
 		System.out.println(com);		//  /list.do라고 뜸(이걸로 페이지를 판단)
 
 		switch (com) {
+		case ("/home.do"):
+			viewPage = "/jsp/home.jsp";
+		break;
+		case ("/salesstatus.do"):
+			viewPage = "/jsp/salesstatus.jsp";
+		break;
 		case ("/productlist.do"):
 			command = new ProductList();
 			command.execute(request, response);
-//			response.sendRedirect("/admin/jsp/productlist.jsp");
 			viewPage = "/jsp/productlist.jsp";
+			break;
+		case ("/productinsert.do"):
+			viewPage = "/jsp/productinsert.jsp";
 			break;
 		case ("/productdetail.do"):
 			command = new ProductDetail();
 			command.execute(request, response);
-//			response.sendRedirect("/admin/jsp/productlist.jsp");
 			viewPage = "/jsp/productdetail.jsp";
-			break;
+		break;
 		case ("/productcrud.do"):
 			command = new ProductCRUD();
 			command.execute(request, response);

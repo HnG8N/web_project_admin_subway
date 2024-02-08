@@ -14,44 +14,54 @@
     $('#product').validate({
         rules: {
             mnctg: {
-                required: true
+                required: true,
+                maxlength: 10
             },
             mnname: {
-                required: true
+                required: true,
+                maxlength: 30
             },
             mnengname: {
-                required: true
+                required: true,
+                maxlength: 50
             },
             mninfo: {
                 required: true
             },
             mnprice: {
                 required: true,
+                maxlength: 5
             },
         },
         messages: {
             mnctg: {
-                required: "카테고리를 입력하세요."
+                required: "카테고리를 입력하세요.",
+                maxlength: "10자 이하로 입력해주세요."
             },
             mnname: {
-                required: "이름을 입력하세요."
+                required: "이름을 입력하세요.",
+                maxlength: "30자 이하로 입력해주세요."
             },
             mnengname: {
-                required: "영문명을 입력하세요."
+                required: "영문명을 입력하세요.",
+                maxlength: "50자 이하로 입력해주세요."
             },
             mninfo: {
                 required: "상세 정보를 입력하세요."
             },
             mnprice: {
                 required: "가격을 입력하세요.",
+                maxlength: "10만원 미만으로 입력해주세요."
             },
         }
     });
     $('#product').submit(function(event) {
     // 이미지 파일이 선택되었는지 확인
-	    var image = $('#mnimg').val();
-	    if (image === '') {
-	        // 이미지가 선택되지 않았을 경우 제출 막고 메시지 출력
+	    let imgElement = document.getElementById('img').onload;
+	    let mnimg = $('#mnimg').val();
+	    //alert(!imgElement)
+	    //alert(!mnimg)
+	    if (!imgElement && !mnimg) {		// 이미지가 선택되지 않았고 이미지가 출력되지 않았을 경우 제출 막고 메시지 출력
 	        event.preventDefault(); // 폼 제출 방지
 	        alert('이미지를 등록해주세요.');
 	    }

@@ -33,15 +33,11 @@
 		margin-left: auto; /* 검색 버튼을 맨 오른쪽에 배치합니다. */
 	}
   </style>
-<!--   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
- -->  
 </head>
 <body>
-<!-- 	
 <div>
-<c:import url="../sidebar/sidebar.jsp" />
+	<c:import url="../headerfooter/header.jsp" />
 </div>
- -->
 <h2 id="title">상품 리스트</h2><br>
 <div class="container">
 	 	<select name="selectSearch" id="selectSearch">
@@ -50,28 +46,17 @@
 	 	</select>
 	 	<input type="text" name="search" id="search">
 	 	<input type="button" id="searchBtn" name="searchBtn" value="검색">
-	 	<form action="productdetail.do" method="post" id="insertBtnForm">
+	 	<form action="productinsert.do" method="post" id="insertBtnForm">
 	 	<input type="submit" id="insertBtn" name="insertBtn" value="새 상품 등록"> <!-- 새 상품 등록 버튼 -->
 	 	</form>
 	 	<br>
 	 	<br>
 </div>
-<!-- 		
-		<c:forEach var="dtos" items="${LIST }">
-	        <div class="card">
-	          <table style="width: 100%;">
-	          	<tr>
-	 			<td style="width: 10%;"><img src="img/${dtos.mnimg }" class="card-img-top" alt="..." ></td>
-	          	<td style="width: 5%;">${dtos.mncode }</td> <td style="width: 5%;">${dtos.mnctg }</td> <td style="width: 5%;">${dtos.mnname }</td>
-	          	<td style="width: 5%;">${dtos.mnengname }</td> <td style="width: 50%;">${dtos.mninfo }</td> <td style="width: 10%;">${dtos.mnprice }</td>
-	            <td style="width: 10%;"><a href="productcrud.do?mncode=${dtos.mncode }" class="btn btn-primary">자세히 보기</a></td>
-	          	</tr>
-	          </table>
-	          </div>
-	 	  </c:forEach>
- -->       
 <div id="result"></div>
+<div>
+	<c:import url="../headerfooter/footer.jsp" />
+</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="js/ProductList.js"></script>
+<script src="js/productlist.js"></script>
 </html>

@@ -30,12 +30,12 @@ function createList(data){
 	          	'<td style="width: 15%;">' + data[i].mnname + '</td>' +
 	          	'<td style="width: 15%;">' + data[i].mnengname + '</td> ' +
 	          	'<td style="width: 30%;">' + data[i].mninfo + '</td>' +
-	          	'<td style="width: 10%;">' + 
+	          	'<td style="width: 8%; text-align: right;">' + 
 	          //'<fmt:formatNumber value="' + 
 	          	data[i].mnprice.toLocaleString() + 
 	          //'" groupingUsed="true"></fmt:formatNumber>' + 
 	          	"원" + '</td>' +
-	            '<td style="width: 8%;"><a href="productdetail.do?mncode=' + data[i].mncode + '" class="btn btn-primary">수정</a></td>'+
+	            '<td style="width: 10%; text-align: center;"><a href="productdetail.do?mncode=' + data[i].mncode + '" class="btn btn-primary">수정</a></td>'+
 	          	'</tr>' +
 	            '</table>' +
 	            '</div>'

@@ -16,16 +16,14 @@ public class ProductDetail implements Command {
 //		HttpSession session = request.getSession();
 		
 		String mncode = request.getParameter("mncode");
-		System.out.println(mncode);
+//		System.out.println(mncode);
 		
-		if(mncode != null) {
-			ProductSelect_Dao dao = new ProductSelect_Dao();
-			ArrayList<ProductSelect_Dto> dtos = dao.searchCodeAction(mncode);
-			ProductSelect_Dto dto = dtos.get(0);
-			
-			request.setAttribute("MENU", dto);
-		}
+		ProductSelect_Dao dao = new ProductSelect_Dao();
+		ArrayList<ProductSelect_Dto> dtos = dao.searchCodeAction(mncode);
+		ProductSelect_Dto dto = dtos.get(0);
+		
+		request.setAttribute("MENU", dto);
 		
 	}
 
-}
+}// End

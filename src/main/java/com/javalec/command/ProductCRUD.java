@@ -28,8 +28,6 @@ public class ProductCRUD implements Command {
 			String mnimg = multi.getFilesystemName("mnimg");
 			// 이미지 이름 출력(확인)
 //            System.out.println(mnimg);
-//            String mncode = multi.getParameter("mncode");
-//            System.out.println(mncode);
             String mnctg = multi.getParameter("mnctg");
 //            System.out.println(mnctg);
             String mnname = multi.getParameter("mnname");
@@ -40,10 +38,18 @@ public class ProductCRUD implements Command {
 //            System.out.println(mninfo);
             String mnprice = multi.getParameter("mnprice");
 //            System.out.println(mnprice);
-            
+            String mncode = multi.getParameter("mncode");
+            System.out.println(!mncode.isEmpty()); // mncode가 비었는지 확인, 왜인지 null값은 아님
             ProductCRUD_Dao dao = new ProductCRUD_Dao();
-            dao.insertAction(mnctg, mnname, mnengname, mninfo, mnimg, mnprice);
-            System.out.println("입력 성공");
+            System.out.println(mnimg!=null);
+            if(!mncode.isEmpty()) {
+            	dao.updateAction(mnctg, mnname, mnengname, mninfo, mnprice, mncode);
+            	if(mnimg !=null) dao.updateMnimg(mnimg, mncode);
+            	System.out.println("수정 성공");
+            }else {
+            	dao.insertAction(mnctg, mnname, mnengname, mninfo, mnimg, mnprice);
+            	System.out.println("입력 성공");
+            }
 
 		} catch (IOException e) {
 			e.printStackTrace();
