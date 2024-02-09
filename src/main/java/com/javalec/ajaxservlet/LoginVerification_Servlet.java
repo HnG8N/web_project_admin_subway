@@ -17,14 +17,14 @@ import com.javalec.dto.LoginVerification_Dto;
 /**
  * Servlet implementation class LoginVerification
  */
-@WebServlet("/LoginVerification")
-public class LoginVerification extends HttpServlet {
+@WebServlet("/LoginVerification_Servlet")
+public class LoginVerification_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginVerification() {
+    public LoginVerification_Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }

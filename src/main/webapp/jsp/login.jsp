@@ -24,6 +24,8 @@
 	</form>
 <br>
 <br>
+<c:set var="Logged_in_ID" value="${Logged_in_ID }" />
+test:${Logged_in_ID }
 </div>
 <div>
 	<c:import url="../headerfooter/footer.jsp" />

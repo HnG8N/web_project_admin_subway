@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javalec.command.Command;
+import com.javalec.command.LoginVerification;
 import com.javalec.command.ProductCRUD;
 import com.javalec.command.ProductDetail;
 import com.javalec.command.ProductList;
@@ -63,6 +64,8 @@ public class FrontController extends HttpServlet {
 
 		switch (com) {
 		case ("/login.do"):
+			command = new LoginVerification();
+			command.execute(request, response);
 			viewPage = "/jsp/login.jsp";
 		break;
 		case ("/home.do"):
