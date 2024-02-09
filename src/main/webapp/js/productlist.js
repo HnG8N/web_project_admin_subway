@@ -47,14 +47,14 @@ function createList(data){
 // 엔터를 눌렀을 때 검색버튼이 클릭되게 하는 function
 $(document).ready(function() {
   // 검색 input 엘리먼트를 찾습니다.
-  var input = document.getElementById("search");
+  let input = $("#search").val();
   
   // input 엘리먼트에 대해 keypress 이벤트를 추가합니다.
-  input.addEventListener("keypress", function(event) {
+  input.on("keypress", function(event) {
     // Enter 키의 keyCode는 13입니다.
     if (event.keyCode === 13) {
       // Enter 키가 눌렸을 때 검색 버튼을 클릭합니다.
-      document.getElementById("searchBtn").click();
+      $("#searchBtn").click();
     }
   });
 });

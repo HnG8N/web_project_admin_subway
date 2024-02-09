@@ -21,7 +21,7 @@ public class ProductSelect_Dao {
 		try {
 			// Server의 context.xml의 소스를 가져와야 함	
 			Context context = new InitialContext();
-			// DataSource를 가져옴, java:comp/env가 파일위치,  jdbc/mvc는 context.xml에서 만들어준 파일이름
+			// DataSource를 가져옴, java:comp/env가 파일위치,  jdbc/subway는 context.xml에서 만들어준 파일이름
 			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/subway");
 			
 		}catch(Exception e) {
