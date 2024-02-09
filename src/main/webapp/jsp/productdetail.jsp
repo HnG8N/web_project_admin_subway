@@ -55,7 +55,7 @@
 			<img id="imgPreview" src="img/cat1.png" alt="이미지를 등록 해주세요."/>
 	    </div>
 	    <div style="flex: 1;">
-	        <h2>영양성분표 입력</h2>
+	        <h2>영양성분표 수정</h2>
 			중량(g):
 			<input type="text" id="mngram" name="mngram" placeholder="중량(g)을 입력해주세요. (숫자만 가능)" size="40" value="${dto.mngram }"><br>
 			<br>
