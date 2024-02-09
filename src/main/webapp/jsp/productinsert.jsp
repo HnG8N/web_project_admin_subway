@@ -58,7 +58,7 @@
 			<input type="text" id="mnkcal" name="mnkcal" placeholder="열량(Kcal)을 입력해주세요. (숫자만 가능)" size="40"><br>
 			<br>
 			단백질(g):
-			<input type="text" id="mnprotien" name="mnprotien" placeholder="단백질(g)을 입력해주세요. (숫자만 가능)" size="40"><br>
+			<input type="text" id="mnprotein" name="mnprotein" placeholder="단백질(g)을 입력해주세요. (숫자만 가능)" size="40"><br>
 			<br>
 			포화지방(g):
 			<input type="text" id="mnfat" name="mnfat" placeholder="포화지방(g)을 입력해주세요. (숫자만 가능)" size="40"><br>

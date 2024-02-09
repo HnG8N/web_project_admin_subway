@@ -7,8 +7,12 @@
         var replace_text = $(this).val().replace(/[^a-zA-Z& .™]/g, '');
         $(this).val(replace_text);
     });
-    $("#mnprice, #mngram, #mnkcal, #mnprotein, #mnfat, #mnsugar, #mnnatrum").keyup(function() {
+    $("#mnprice").keyup(function() {
         var replace_text = $(this).val().replace(/[^-0-9]/g, '');
+        $(this).val(replace_text);
+    });
+    $("#mngram, #mnkcal, #mnprotein, #mnfat, #mnsugar, #mnnatrum").keyup(function() {
+	var replace_text = $(this).val().replace(/[^\d.]/g, '').replace(/^(\d{0,3}(?:\.\d{0,2})?).*/, '$1');
         $(this).val(replace_text);
     });
     $('#product').validate({
@@ -34,27 +38,27 @@
             },
             mngram: {
                 required: true,
-                maxlength: 4
+                maxlength: 5
             },
             mnkcal: {
                 required: true,
-                maxlength: 4
+                maxlength: 5
             },
             mnprotein: {
                 required: true,
-                maxlength: 4
+                maxlength: 5
             },
             mnfat: {
                 required: true,
-                maxlength: 4
+                maxlength: 5
             },
             mnsugar: {
                 required: true,
-                maxlength: 4
+                maxlength: 5
             },
             mnnatrum: {
                 required: true,
-                maxlength: 4
+                maxlength: 5
             },
         },
         messages: {
@@ -79,27 +83,27 @@
             },
             mngram: {
                 required: "중량(g)을 입력하세요.",
-                maxlength: "1000g 미만으로 입력해주세요."
+                maxlength: "5글자 이하로 입력해주세요."
             },
             mnkcal: {
                 required: "열량(kcal)을 입력하세요.",
-                maxlength: "1000kcal 미만으로 입력해주세요."
+                maxlength: "5글자 이하로 입력해주세요."
             },
             mnprotein: {
                 required: "단백질(g)을 입력하세요.",
-                maxlength: "1000g 미만으로 입력해주세요."
+                maxlength: "5글자 이하로 입력해주세요."
             },
             mnfat: {
                 required: "포화지방(g) 입력하세요.",
-                maxlength: "1000g 미만으로 입력해주세요."
+                maxlength: "5글자 이하로 입력해주세요."
             },
             mnsugar: {
                 required: "당류(g)를 입력하세요.",
-                maxlength: "1000g 미만으로 입력해주세요."
+                maxlength: "5글자 이하로 입력해주세요."
             },
             mnnatrum: {
                 required: "나트륨(mg)을 입력하세요.",
-                maxlength: "1000mg 미만으로 입력해주세요."
+                maxlength: "5글자 이하로 입력해주세요."
             },
         }
     });

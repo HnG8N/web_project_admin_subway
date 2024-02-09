@@ -54,7 +54,8 @@ public class ProductCRUD implements Command {
             	if(mnimg !=null) dao.updateMnimg(mnimg, mncode);
             	System.out.println("수정 성공");
             }else {
-            	dao.insertAction(mnctg, mnname, mnengname, mninfo, mnimg, mnprice);
+            	dao.insertAction(mnctg, mnname, mnengname, mninfo, mnimg, mnprice, 
+            			mngram, mnkcal, mnprotein, mnfat, mnsugar, mnnatrum);
             	System.out.println("입력 성공");
             }
 
