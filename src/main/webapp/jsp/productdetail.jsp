@@ -28,32 +28,56 @@
 	<c:import url="../headerfooter/header.jsp" />
 </div>
 <div>
-<h2>상품 수정</h2>
-<br>
-<img id = "img" src="img/${dto.mnimg }" alt="..."/>
 <form action="productcrud.do" name="product" id="product" method="post" enctype="multipart/form-data" class="product">
-	<label for="name">제품코드:</label>
-	<input type="text" id="mncode" name="mncode" readonly="readonly" placeholder="상품코드는 자동으로 입력됩니다." value="${dto.mncode }" size="25"><br>
-	<br>
-	<label for="mnctg">카테고리:</label>
-	<input type="text" id="mnctg" name="mnctg" placeholder="카테고리를 입력해주세요." value="${dto.mnctg }" size="25"><br>
-	<br>
-	<label for="mnname">이름:</label>
-	<input type="text" id="mnname" name="mnname" placeholder="한글명을 입력해주세요. (&과 공백 가능)" value="${dto.mnname }" size="30"><br>
-	<br>
-	<label for="mnengname">영문명:</label>
-	<input type="text" id="mnengname" name="mnengname" placeholder="영문명을 입력해주세요. (&과 공백 가능)" value="${dto.mnengname }" size="30"><br>
-	<br>
-	<label for="mninfo">상세정보:</label><br>
-	<textarea id="mninfo" name="mninfo" rows="10" cols="50" placeholder="상세정보를 입력해주세요.">${dto.mninfo }</textarea><br>
-	<br>
-	<label for="mnprice">가격:</label>
-	<input type="text" id="mnprice" name="mnprice" placeholder="가격을 입력해주세요. (숫자만 가능)" value="${dto.mnprice }" size="30"><br>
-	<br>
-	<label for="mnimg">이미지:</label>
-	<input type="file" id="mnimg" name="mnimg" onchange="previewImage(event)"><br>
-	<img id="imgPreview" src="img/cat1.png" alt="이미지를 등록 해주세요."/>
-	<button type="submit" name="insertBtn" id="insertBtn" value="insertBtn">입력</button>
+	<section style="display: flex;">
+	    <div style="flex: 1;">
+			<h2>상품 수정</h2>
+            상품코드:
+            <input type="text" id="mncode" name="mncode" readonly="readonly" placeholder="상품코드는 자동으로 입력됩니다." size="25" value="${dto.mncode }"><br>
+            <br>
+		    카테고리:
+			<input type="text" id="mnctg" name="mnctg" placeholder="카테고리를 입력해주세요." value="${dto.mnctg }"><br>
+			<br>
+			이름:
+			<input type="text" id="mnname" name="mnname" placeholder="한글명을 입력해주세요. (&과 공백 가능)" size="30" value="${dto.mnname }"><br>
+			<br>
+			영문명:
+			<input type="text" id="mnengname" name="mnengname" placeholder="영문명을 입력해주세요. (&과 공백 가능)" size="30" value="${dto.mnengname }"><br>
+			<br>
+			상세정보:<br>
+			<textarea id="mninfo" name="mninfo" rows="10" cols="50" placeholder="상세정보를 입력해주세요.">${dto.mninfo }</textarea><br>
+			<br>
+			가격:
+			<input type="text" id="mnprice" name="mnprice" placeholder="가격을 입력해주세요. (숫자만 가능)" size="30" value="${dto.mnprice }"><br>
+			<br>
+			이미지:
+			<input type="file" id="mnimg" name="mnimg" onchange="previewImage(event)"><br>
+			<img id="imgPreview" src="img/cat1.png" alt="이미지를 등록 해주세요."/>
+	    </div>
+	    <div style="flex: 1;">
+	        <h2>영양성분표 입력</h2>
+			중량(g):
+			<input type="text" id="mngram" name="mngram" placeholder="중량(g)을 입력해주세요. (숫자만 가능)" size="40" value="${dto.mngram }"><br>
+			<br>
+			열량(kcal):
+			<input type="text" id="mnkcal" name="mnkcal" placeholder="열량(Kcal)을 입력해주세요. (숫자만 가능)" size="40" value="${dto.mnkcal }"><br>
+			<br>
+			단백질(g):
+			<input type="text" id="mnprotein" name="mnprotein" placeholder="단백질(g)을 입력해주세요. (숫자만 가능)" size="40" value="${dto.mnprotein }"><br>
+			<br>
+			포화지방(g):
+			<input type="text" id="mnfat" name="mnfat" placeholder="포화지방(g)을 입력해주세요. (숫자만 가능)" size="40" value="${dto.mnfat }"><br>
+			<br>
+			당류(g):
+			<input type="text" id="mnsugar" name="mnsugar" placeholder="당류(g)을 입력해주세요. (숫자만 가능)" size="40" value="${dto.mnsugar }"><br>
+			<br>
+			나트륨(mg):
+			<input type="text" id="mnnatrum" name="mnnatrum" placeholder="나트륨(mg)을 입력해주세요. (숫자만 가능)" size="40" value="${dto.mnnatrum }"><br>
+			<br>
+			<img id="img" name="img" src="img/${dto.mnimg }" alt="..."/><br>
+			<button type="submit" name="insertBtn" id="insertBtn" value="insertBtn">입력</button>
+	    </div>
+	</section>
 </form>
 </div>
 <div>

@@ -39,11 +39,18 @@ public class ProductCRUD implements Command {
             String mnprice = multi.getParameter("mnprice");
 //            System.out.println(mnprice);
             String mncode = multi.getParameter("mncode");
+            String mngram = multi.getParameter("mngram");
+            String mnkcal = multi.getParameter("mnkcal");
+            String mnprotein = multi.getParameter("mnprotein");
+            String mnfat = multi.getParameter("mnfat");
+            String mnsugar = multi.getParameter("mnsugar");
+            String mnnatrum = multi.getParameter("mnnatrum");
             System.out.println(!mncode.isEmpty()); // mncode가 비었는지 확인, 왜인지 null값은 아님
             ProductCRUD_Dao dao = new ProductCRUD_Dao();
             System.out.println(mnimg!=null);
             if(!mncode.isEmpty()) {
-            	dao.updateAction(mnctg, mnname, mnengname, mninfo, mnprice, mncode);
+            	dao.updateAction(mnctg, mnname, mnengname, mninfo, mnprice, mncode,
+            			mngram, mnkcal, mnprotein, mnfat, mnsugar, mnnatrum);
             	if(mnimg !=null) dao.updateMnimg(mnimg, mncode);
             	System.out.println("수정 성공");
             }else {

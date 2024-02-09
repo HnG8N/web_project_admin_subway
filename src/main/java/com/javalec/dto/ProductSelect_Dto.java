@@ -1,6 +1,7 @@
 package com.javalec.dto;
 
 public class ProductSelect_Dto {
+	
 	// Field
 	int mncode;
 	String mnctg;
@@ -9,6 +10,12 @@ public class ProductSelect_Dto {
 	String mninfo;
 	int mnprice;
 	String mnimg;
+	double mngram;
+	double mnkcal;
+	double mnprotein;
+	double mnfat;
+	double mnsugar;
+	double mnnatrum;
 
 	// Constructor
 	
@@ -26,6 +33,25 @@ public class ProductSelect_Dto {
 		this.mninfo = mninfo;
 		this.mnprice = mnprice;
 		this.mnimg = mnimg;
+	}
+	
+	public ProductSelect_Dto(int mncode, String mnctg, String mnname, String mnengname, String mninfo, int mnprice,
+			String mnimg, double mngram, double mnkcal, double mnprotein, double mnfat, double mnsugar,
+			double mnnatrum) {
+		super();
+		this.mncode = mncode;
+		this.mnctg = mnctg;
+		this.mnname = mnname;
+		this.mnengname = mnengname;
+		this.mninfo = mninfo;
+		this.mnprice = mnprice;
+		this.mnimg = mnimg;
+		this.mngram = mngram;
+		this.mnkcal = mnkcal;
+		this.mnprotein = mnprotein;
+		this.mnfat = mnfat;
+		this.mnsugar = mnsugar;
+		this.mnnatrum = mnnatrum;
 	}
 
 	// Method
@@ -83,6 +109,54 @@ public class ProductSelect_Dto {
 
 	public void setMnimg(String mnimg) {
 		this.mnimg = mnimg;
+	}
+
+	public double getMngram() {
+		return mngram;
+	}
+
+	public void setMngram(double mngram) {
+		this.mngram = mngram;
+	}
+
+	public double getMnkcal() {
+		return mnkcal;
+	}
+
+	public void setMnkcal(double mnkcal) {
+		this.mnkcal = mnkcal;
+	}
+
+	public double getMnprotein() {
+		return mnprotein;
+	}
+
+	public void setMnprotein(double mnprotein) {
+		this.mnprotein = mnprotein;
+	}
+
+	public double getMnfat() {
+		return mnfat;
+	}
+
+	public void setMnfat(double mnfat) {
+		this.mnfat = mnfat;
+	}
+
+	public double getMnsugar() {
+		return mnsugar;
+	}
+
+	public void setMnsugar(double mnsugar) {
+		this.mnsugar = mnsugar;
+	}
+
+	public double getMnnatrum() {
+		return mnnatrum;
+	}
+
+	public void setMnnatrum(double mnnatrum) {
+		this.mnnatrum = mnnatrum;
 	}
 
 }

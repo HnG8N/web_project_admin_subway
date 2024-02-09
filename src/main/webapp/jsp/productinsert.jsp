@@ -6,56 +6,76 @@
 <head>
 <title>상품 관리</title>
 </head>
-	<style>
-	#img {
-	    width: 250px; /* 너비를 250px로 설정 */
-	    height: auto; /* 높이를 auto로 설정 */
-	    object-fit: contain;
-	}
-	#imgPreview {
-	    width: 250px; /* 너비를 250px로 설정 */
-	    height: auto; /* 높이를 auto로 설정 */
-	    object-fit: contain;
-	}
-	</style>
-    <link href="css/home.css" rel="stylesheet" />
-<section>
-<!-- 	<c:import url="../sidebar/sidebar.jsp" />
- --></section>
+<link href="css/home.css" rel="stylesheet" />
+<style>
+    #img {
+        width: 250px; /* 너비를 250px로 설정 */
+        height: auto; /* 높이를 auto로 설정 */
+        object-fit: contain;
+    }
+    #imgPreview {
+        width: 250px; /* 너비를 250px로 설정 */
+        height: auto; /* 높이를 auto로 설정 */
+        object-fit: contain;
+    }
+</style>
 <body>
 <div>
-	<c:import url="../headerfooter/header.jsp" />
+    <c:import url="../headerfooter/header.jsp" />
 </div>
-<div>
-<h2>상품 등록</h2>
-<img id = "img"/>
 <form action="productcrud.do" name="product" id="product" method="post" enctype="multipart/form-data" class="product">
-	<label for="name">상품코드:</label>
-	<input type="text" id="mncode" name="mncode" readonly="readonly" placeholder="상품코드는 자동으로 입력됩니다." size="25"><br>
-	<br>
-	<label for="mnctg">카테고리:</label>
-	<input type="text" id="mnctg" name="mnctg" placeholder="카테고리를 입력해주세요."><br>
-	<br>
-	<label for="mnname">이름:</label>
-	<input type="text" id="mnname" name="mnname" placeholder="한글명을 입력해주세요. (&과 공백 가능)" size="30"><br>
-	<br>
-	<label for="mnengname">영문명:</label>
-	<input type="text" id="mnengname" name="mnengname" placeholder="영문명을 입력해주세요. (&과 공백 가능)" size="30"><br>
-	<br>
-	<label for="mninfo">상세정보:</label><br>
-	<textarea id="mninfo" name="mninfo" rows="10" cols="50" placeholder="상세정보를 입력해주세요."></textarea><br>
-	<br>
-	<label for="mnprice">가격:</label>
-	<input type="text" id="mnprice" name="mnprice" placeholder="가격을 입력해주세요. (숫자만 가능)" size="30"><br>
-	<br>
-	<label for="mnimg">이미지:</label>
-	<input type="file" id="mnimg" name="mnimg" onchange="previewImage(event)"><br>
-	<img id="imgPreview" src="img/cat1.png" alt="이미지를 등록 해주세요."/>
-	<button type="submit" name="insertBtn" id="insertBtn" value="insertBtn">입력</button>
+	<section style="display: flex;">
+	    <div style="flex: 1;">
+		<h2>상품 등록</h2>
+            상품코드:
+            <input type="text" id="mncode" name="mncode" readonly="readonly" placeholder="상품코드는 자동으로 입력됩니다." size="25"><br>
+            <br>
+		    카테고리:
+			<input type="text" id="mnctg" name="mnctg" placeholder="카테고리를 입력해주세요."><br>
+			<br>
+			이름:
+			<input type="text" id="mnname" name="mnname" placeholder="한글명을 입력해주세요. (&과 공백 가능)" size="30"><br>
+			<br>
+			영문명:
+			<input type="text" id="mnengname" name="mnengname" placeholder="영문명을 입력해주세요. (&과 공백 가능)" size="30"><br>
+			<br>
+			상세정보:<br>
+			<textarea id="mninfo" name="mninfo" rows="10" cols="50" placeholder="상세정보를 입력해주세요."></textarea><br>
+			<br>
+			가격:
+			<input type="text" id="mnprice" name="mnprice" placeholder="가격을 입력해주세요. (숫자만 가능)" size="30"><br>
+			<br>
+			이미지:
+			<input type="file" id="mnimg" name="mnimg" onchange="previewImage(event)"><br>
+			<img id="imgPreview" src="img/cat1.png" alt="이미지를 등록 해주세요."/>
+	    </div>
+	    <div style="flex: 1;">
+	        <h2>영양성분표 입력</h2>
+			중량(g):
+			<input type="text" id="mngram" name="mngram" placeholder="중량(g)을 입력해주세요. (숫자만 가능)" size="40"><br>
+			<br>
+			열량(kcal):
+			<input type="text" id="mnkcal" name="mnkcal" placeholder="열량(Kcal)을 입력해주세요. (숫자만 가능)" size="40"><br>
+			<br>
+			단백질(g):
+			<input type="text" id="mnprotien" name="mnprotien" placeholder="단백질(g)을 입력해주세요. (숫자만 가능)" size="40"><br>
+			<br>
+			포화지방(g):
+			<input type="text" id="mnfat" name="mnfat" placeholder="포화지방(g)을 입력해주세요. (숫자만 가능)" size="40"><br>
+			<br>
+			당류(g):
+			<input type="text" id="mnsugar" name="mnsugar" placeholder="당류(g)을 입력해주세요. (숫자만 가능)" size="40"><br>
+			<br>
+			나트륨(mg):
+			<input type="text" id="mnnatrum" name="mnnatrum" placeholder="나트륨(mg)을 입력해주세요. (숫자만 가능)" size="40"><br>
+			<br>
+			<img id="img" src="img/f.jpg"><br>
+			<button type="submit" name="insertBtn" id="insertBtn" value="insertBtn">입력</button>
+	    </div>
+	</section>
 </form>
-</div>
 <div>
-	<c:import url="../headerfooter/footer.jsp" />
+    <c:import url="../headerfooter/footer.jsp" />
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

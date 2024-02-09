@@ -39,7 +39,9 @@ public class ProductSelect_Dao {
 		
 		try {
 			connection = dataSource.getConnection();	// dataSoure를 연결 해주는 명령어
-			String query = "SELECT mncode, mnctg, mnname, mnengname, mninfo, mnimg, mnprice FROM menu";	// 쿼리문 작성
+			String query = "SELECT m.mncode, m.mnctg, m.mnname, m.mnengname, m.mninfo, m.mnimg, m.mnprice, "
+						+ " s.mngram, s.mnkcal, s.mnprotein, s.mnfat, s.mnsugar, s.mnnatrum"
+						+ " FROM menu AS m JOIN menuspec AS s ON m.mncode = s.mncode";	// 쿼리문 작성
 			
 			preparedStatement = connection.prepareStatement(query);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -47,13 +49,19 @@ public class ProductSelect_Dao {
 			while(rs.next()) {
 				ProductSelect_Dto dto = new ProductSelect_Dto();
 				
-				dto.setMncode(rs.getInt("mncode"));
-				dto.setMnctg(rs.getString("mnctg"));
-				dto.setMnname(rs.getString("mnname"));
-				dto.setMnengname(rs.getString("mnengname"));
-				dto.setMninfo(rs.getString("mninfo"));
-				dto.setMnimg(rs.getString("mnimg"));
-				dto.setMnprice(rs.getInt("mnprice"));
+				dto.setMncode(rs.getInt("m.mncode"));
+				dto.setMnctg(rs.getString("m.mnctg"));
+				dto.setMnname(rs.getString("m.mnname"));
+				dto.setMnengname(rs.getString("m.mnengname"));
+				dto.setMninfo(rs.getString("m.mninfo"));
+				dto.setMnimg(rs.getString("m.mnimg"));
+				dto.setMnprice(rs.getInt("m.mnprice"));
+				dto.setMngram(rs.getDouble("s.mngram"));
+				dto.setMnkcal(rs.getDouble("s.mnkcal"));
+				dto.setMnprotein(rs.getDouble("s.mnprotein"));
+				dto.setMnfat(rs.getDouble("s.mnfat"));
+				dto.setMnsugar(rs.getDouble("s.mnsugar"));
+				dto.setMnnatrum(rs.getDouble("s.mnnatrum"));
 				
 				dtos.add(dto);
 			}
@@ -127,8 +135,10 @@ public class ProductSelect_Dao {
 		
 		try {
 			connection = dataSource.getConnection();	// dataSoure를 연결 해주는 명령어
-			String query = "SELECT mncode, mnctg, mnname, mnengname, mninfo, mnimg, mnprice FROM menu"
-						+ " WHERE mncode = ?";	// 쿼리문 작성
+			String query = "SELECT m.mncode, m.mnctg, m.mnname, m.mnengname, m.mninfo, m.mnimg, m.mnprice, "
+					+ " s.mngram, s.mnkcal, s.mnprotein, s.mnfat, s.mnsugar, s.mnnatrum"
+					+ " FROM menu AS m, menuspec AS s "
+					+ " WHERE m.mncode = ? AND m.mncode = s.mncode";	// 쿼리문 작성
 			
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, mncode);
@@ -145,6 +155,12 @@ public class ProductSelect_Dao {
 				dto.setMninfo(rs.getString("mninfo"));
 				dto.setMnimg(rs.getString("mnimg"));
 				dto.setMnprice(rs.getInt("mnprice"));
+				dto.setMngram(rs.getDouble("s.mngram"));
+				dto.setMnkcal(rs.getDouble("s.mnkcal"));
+				dto.setMnprotein(rs.getDouble("s.mnprotein"));
+				dto.setMnfat(rs.getDouble("s.mnfat"));
+				dto.setMnsugar(rs.getDouble("s.mnsugar"));
+				dto.setMnnatrum(rs.getDouble("s.mnnatrum"));
 				
 				dtos.add(dto);
 			}
