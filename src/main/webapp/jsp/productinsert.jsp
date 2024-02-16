@@ -31,7 +31,12 @@
             <input type="text" id="mncode" name="mncode" readonly="readonly" placeholder="상품코드는 자동으로 입력됩니다." size="25"><br>
             <br>
 		    카테고리:
-			<input type="text" id="mnctg" name="mnctg" placeholder="카테고리를 입력해주세요."><br>
+		    <select name="mnctg" id="mnctg">
+		    	<option value="sandwich">sandwich</option>
+		    	<option value="salad">salad</option>
+		    	<option value="wrap">wrap</option>
+		    </select>
+			<input type="hidden" id="mnctgtext" name="mnctgtext" placeholder="카테고리를 선택해주세요." readonly="readonly"><br>
 			<br>
 			이름:
 			<input type="text" id="mnname" name="mnname" placeholder="한글명을 입력해주세요. (&과 공백 가능)" size="30"><br>

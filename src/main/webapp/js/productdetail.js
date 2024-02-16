@@ -1,6 +1,11 @@
  $(document).ready(function() {
-	 if($("#mnctgtext").val() != null) {
-		 $("select[name=mnctg]").val($("#mnctgtext").val()).prop("selected", true);
+	 
+	 // textfield에 입력된 값
+	 let mnctgtxt = $("#mnctgtext").val();
+	 
+	 // textfiled에 입력된 값이 있을 경우 combobox를 그 밸류 값으로 selected
+	 if(mnctgtxt != null) {
+		 $("#mnctg").val(mnctgtxt).attr("selected","selected");
 	 }
 	 
     $("#mnname").keyup(function() {

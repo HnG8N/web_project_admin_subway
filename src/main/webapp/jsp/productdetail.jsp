@@ -38,10 +38,10 @@
 		    카테고리:
 		    <select name="mnctg" id="mnctg">
 		    	<option value="sandwich">sandwich</option>
-		    	<option value="sandwich">salad</option>
-		    	<option value="sandwich">wrap</option>
+		    	<option value="salad">salad</option>
+		    	<option value="wrap">wrap</option>
 		    </select>
-			<input type="text" id="mnctgtext" name="mnctgtext" placeholder="카테고리를 선택해주세요." value="${dto.mnctg }" readonly="readonly"><br>
+			<input type="hidden" id="mnctgtext" name="mnctgtext" placeholder="카테고리를 선택해주세요." value="${dto.mnctg }" readonly="readonly"><br>
 			<br>
 			이름:
 			<input type="text" id="mnname" name="mnname" placeholder="한글명을 입력해주세요. (&과 공백 가능)" size="30" value="${dto.mnname }"><br>
