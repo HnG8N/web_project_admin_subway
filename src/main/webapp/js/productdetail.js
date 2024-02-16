@@ -1,4 +1,8 @@
- $(document).ready(function() {			
+ $(document).ready(function() {
+	 if($("#mnctgtext").val() != null) {
+		 $("select[name=mnctg]").val($("#mnctgtext").val()).prop("selected", true);
+	 }
+	 
     $("#mnname").keyup(function() {
         var replace_text = $(this).val().replace(/[^ㄱ-ㅎㅏ-ㅣ가-힣&\s]/g, '');
         $(this).val(replace_text);

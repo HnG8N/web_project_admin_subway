@@ -1,6 +1,8 @@
+$(document).ready(function() {
 	// Field
 	let startDay = ''; // 달력에서 시작 날짜
 	let endDay = ''; // 달력에서 마지막 날짜
+	let myChart = null;
 
 	// 텍스트필드를 클릭해 시작 날짜를 선택하는 function
 	$('input[name="startCalendar"]').daterangepicker({
@@ -102,6 +104,10 @@ $("#calendar").on("click",function(){
 			for(i=0; i<data.length; i++){
 				opriceArray.push(data[i].odaysum * 1);
 			};
+            // 기존 차트가 존재한다면 제거
+            if (myChart !== null) {
+                myChart.destroy();
+            }
 			barChart(odayArray, opriceArray);
 	    }
 	});
@@ -112,10 +118,7 @@ $("#calendar").on("click",function(){
 function barChart(odayArray, opriceArray){
 
   const ctx = document.getElementById('myChart');
-  ctx.width = 1350;
-  ctx.height = 500;
-  
-  new Chart(ctx, {
+  const config = {
     type: 'bar',
     data: {
       labels: odayArray,
@@ -137,5 +140,10 @@ function barChart(odayArray, opriceArray){
         }
       }
     }
-  });
+  }
+  ctx.width = 1350;
+  ctx.height = 485;
+  
+  myChart = new Chart(ctx, config);
 }
+});

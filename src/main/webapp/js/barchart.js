@@ -20,7 +20,7 @@ $(document).ready(function() {
 			
 		  const ctx = document.getElementById('myChart');
 		  ctx.width = 1350;
-		  ctx.height = 500;
+		  ctx.height = 485;
 		
 		  new Chart(ctx, {
 		    type: 'bar',

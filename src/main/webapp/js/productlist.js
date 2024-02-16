@@ -46,7 +46,7 @@ function createList(data){
 // 엔터를 눌렀을 때 검색버튼이 클릭되게 하는 function
 $(document).ready(function() {
   // 검색 input 엘리먼트를 찾습니다.
-  let input = $("#search").val();
+  let input = $("#search");
   
   // input 엘리먼트에 대해 keypress 이벤트를 추가합니다.
   input.on("keypress", function(event) {
