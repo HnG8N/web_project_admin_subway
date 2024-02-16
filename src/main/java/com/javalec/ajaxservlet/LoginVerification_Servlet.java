@@ -50,6 +50,9 @@ public class LoginVerification_Servlet extends HttpServlet {
 		System.out.println(dto.getMid());
 		System.out.println(dto.getMpw());
 		session.setAttribute("Logged_in_ID", dto.getMid());
+		if(dto.getMid() != null) {
+			session.setAttribute("welcome", dto.getMid() + "님 환영합니다.");
+		}
 		
 		
 		

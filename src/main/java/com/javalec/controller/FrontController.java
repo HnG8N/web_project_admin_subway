@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javalec.command.Command;
-import com.javalec.command.LoginVerification;
+import com.javalec.command.Logout;
+import com.javalec.command.MemberInformation;
 import com.javalec.command.ProductCRUD;
 import com.javalec.command.ProductDetail;
 import com.javalec.command.ProductList;
+import com.javalec.command.Salesstatus;
 
 /**
  * Servlet implementation class FrontController
@@ -64,16 +66,29 @@ public class FrontController extends HttpServlet {
 
 		switch (com) {
 		case ("/login.do"):
-			command = new LoginVerification();
+			command = new Logout();
 			command.execute(request, response);
 			viewPage = "/jsp/login.jsp";
-		break;
+			break;
+		case ("/logout.do"):
+			command = new Logout();
+			command.execute(request, response);
+			viewPage = "/jsp/login.jsp";
+			break;
 		case ("/home.do"):
 			viewPage = "/jsp/home.jsp";
-		break;
+			break;
 		case ("/salesstatus.do"):
+			command = new Salesstatus();
+			command.execute(request, response);
 			viewPage = "/jsp/salesstatus.jsp";
-		break;
+			break;
+		case ("/daystatus.do"):
+			viewPage = "/jsp/daystatus.jsp";
+			break;
+		case ("/piestatus.do"):
+			viewPage = "/jsp/piestatus.jsp";
+			break;
 		case ("/productlist.do"):
 			command = new ProductList();
 			command.execute(request, response);
@@ -86,12 +101,17 @@ public class FrontController extends HttpServlet {
 			command = new ProductDetail();
 			command.execute(request, response);
 			viewPage = "/jsp/productdetail.jsp";
-		break;
+			break;
 		case ("/productcrud.do"):
 			command = new ProductCRUD();
 			command.execute(request, response);
 			response.sendRedirect("/admin/productlist.do");
-		break;
+			break;
+		case ("/memberinformation.do"):
+			command = new MemberInformation();
+			command.execute(request, response);
+			viewPage = "/jsp/memberinformation.jsp";
+			break;
 		default:
 			break;
 		}

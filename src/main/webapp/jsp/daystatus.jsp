@@ -14,15 +14,15 @@
 	<c:import url="../headerfooter/header.jsp" />
 </div>
 <div class="content">
-	<p><h2>매출 현황</h2>
+	<p><h2>일일 매출 현황</h2>
 </div>
 <div>
-    <form action="daystatus.do" style="display: inline;" method="post">
-        <input type="submit" id="daystatus" value="일일 매출 현황 검색">
-    </form>&nbsp;&nbsp;&nbsp;
-    <form action="piestatus.do" style="display: inline;" method="post">
-        <input type="submit" id="piestatus" value="일일 메뉴판매 현황 검색">
-    </form>
+	시작일 : 
+	<input type="text" name ="startCalendar" id="startCalendar" value="2024-01-01" readonly="readonly" size="10" />
+	&nbsp;&nbsp;&nbsp; 마지막일 : 
+	<input type="text" name ="endCalendar" id="endCalendar" value="2024-01-01" readonly="readonly" size="10" />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="button" name ="calendar" id="calendar" value="검색" />
 </div>
 <div>
   <canvas id="myChart"></canvas>
@@ -35,5 +35,5 @@
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script src="js/barchart.js"></script>
+	<script src="js/daystatus.js"></script>
 </html>
